@@ -1,0 +1,54 @@
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn  = document.getElementById("noBtn");
+const msg    = document.getElementById("msg");
+
+yesBtn.onclick = () => {
+    // Show message on page
+    msg.textContent = "You just made my day ❤️";
+
+    // Alert popup
+    alert("You clicked Yes!");
+
+    // Optional: send click to external service here
+    // Example: fetch('https://api.countapi.xyz/hit/yourusername/yes');
+
+    // Hearts animation
+    for(let i=0; i<35; i++){
+        setTimeout(createHeart, i*60);
+    }
+
+    // Sparkles animation
+    for(let i=0; i<20; i++){
+        setTimeout(createSpark, i*40);
+    }
+};
+
+noBtn.onclick = () => {
+    msg.textContent = "❌ Try again – invalid choice.";
+    alert("You clicked No!");
+
+    // Optional: log "No" click
+    // fetch('https://api.countapi.xyz/hit/yourusername/no');
+};
+
+function createHeart(){
+    const h = document.createElement("div");
+    h.className="heart";
+    h.textContent="💖";
+    h.style.left = Math.random()*window.innerWidth+"px";
+    h.style.top  = window.innerHeight-40+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),3500);
+}
+
+function createSpark(){
+    const s = document.createElement("div");
+    s.className="spark";
+    s.textContent="✨";
+    s.style.left = Math.random()*window.innerWidth+"px";
+    s.style.top  = window.innerHeight-120+"px";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1400);
+}
+</script>
